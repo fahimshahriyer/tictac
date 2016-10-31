@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Tic Tac Toe</title>
+	<link rel="stylesheet" href="styles/style.css">
+	<link href="https://fonts.googleapis.com/css?family=Fredoka+One" rel="stylesheet">
+	<script src="https://cdn.jsdelivr.net/vue/2.0.3/vue.js"></script>
+
+</head>
+<body>
+	<div id="tictac" class="flex-center">
+		<h1>Tic-Tac-Toe</h1>
+		<div class="board">
+			<div v-for="(row,rowId) in board">
+	            <div v-for="(item,colId) in row">
+	                <span v-on:click="mark" v-bind="{'data-rowId': rowId, 'data-colId': colId }" class="box" v-bind:class="{'winner':item.win}">{{ item.val }}</span>
+	            </div>
+	        </div>
+		</div>
+		<div id="control" class="text-center">
+			<ul class="scores">
+				<li>You: <span class="data">{{ humanWin }}</span></li>
+				<li>Computer: <span class="data">{{ cpuWin }}</span></li>
+				<li>Draw: <span class="data">{{ draw }}</span></li>
+			</ul>
+			<p>
+				<button class="reset-button" v-on:click="newGame">New Game</button>
+				<button class="reset-button" v-on:click="resetGame">Reset Game</button>
+			</p>
+		</div>
+	</div>
+	<script src="javascript/app.js"></script>
+</body>
+</html>
